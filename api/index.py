@@ -25,6 +25,4 @@ def beacon_event():
         print("🔥 ERROR:", str(e))  # Esto se verá en los logs de Vercel
         return jsonify({"error": str(e)}), 500
 
-# Necesario para Vercel
-def handler(environ, start_response):
-    return app.wsgi_app(environ, start_response)
+
