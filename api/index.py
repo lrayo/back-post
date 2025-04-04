@@ -22,6 +22,9 @@ def beacon_event():
         save_beacon_event(mac, lat, lon, phone, event_type)
         return jsonify({'message': 'Evento guardado exitosamente'}), 200
     except Exception as e:
+        import traceback
+        print("❌ Error al guardar el evento:")
+        traceback.print_exc()  # 👈 Mostrará el error real en logs de Vercel
         return jsonify({'error': str(e)}), 500
     
 def handler(environ, start_response):
