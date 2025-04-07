@@ -15,11 +15,12 @@ def beacon_event():
         lon = data.get("longitude")
         phone = data.get("phone_number")
         event_type = data.get("event_type")
+        platform = data.get("platform")
 
         if not mac or not event_type:
             return jsonify({"error": "Faltan campos requeridos"}), 400
 
-        save_beacon_event(mac, lat, lon, phone, event_type)
+        save_beacon_event(mac, lat, lon, phone, event_type, platform)
         return jsonify({"message": "✅ Evento guardado exitosamente"}), 200
     except Exception as e:
         print("🔥 ERROR:", str(e))  # Esto se verá en los logs de Vercel
